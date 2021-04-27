@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_152952) do
+ActiveRecord::Schema.define(version: 2021_04_27_172258) do
 
   create_table "orders", force: :cascade do |t|
     t.string "number"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_152952) do
     t.float "price"
     t.string "image"
     t.float "offer"
+    t.integer "promotion_id"
+    t.index ["promotion_id"], name: "index_products_on_promotion_id"
   end
 
   create_table "promotions", force: :cascade do |t|
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_152952) do
     t.integer "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "kind", default: "buy-x-take-y"
   end
 
+  add_foreign_key "products", "promotions"
 end
