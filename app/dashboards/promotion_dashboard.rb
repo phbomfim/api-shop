@@ -11,6 +11,7 @@ class PromotionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     base: Field::Number,
     value: Field::Number,
+    kind: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -22,15 +23,16 @@ class PromotionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    kind
     base
     value
-    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    kind
     base
     value
     created_at

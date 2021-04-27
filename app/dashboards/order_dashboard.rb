@@ -24,7 +24,6 @@ class OrderDashboard < Administrate::BaseDashboard
     id
     number
     delivery_tax
-    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
