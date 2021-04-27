@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
+  #Admin dashboard route
   namespace :admin do
-      resources :orders
-      resources :products
-      resources :promotions
+    resources :orders
+    resources :products
+    resources :promotions
 
-      root to: "orders#index"
-    end
+    root to: "orders#index"
+  end
   
+  #API route
+  namespace :api do
+    namespace :v1 do
+      resources :products
+    end
+  end
+
   root to: 'home#index'
 
 end
