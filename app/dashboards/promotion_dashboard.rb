@@ -62,7 +62,7 @@ class PromotionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how promotions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(promotion)
-  #   "Promotion ##{promotion.id}"
-  # end
+  def display_resource(promotion)
+    "Promotion: Buy #{promotion.base} take #{promotion.value}"
+  end
 end
