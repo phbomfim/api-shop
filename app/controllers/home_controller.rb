@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
     def index
-        @products = Product.order(published_at: :desc)
-        @orders = Order.order(published_at: :desc)
+        @orders = Order.includes(:products)
     end
 
     def terms
@@ -12,8 +11,8 @@ class HomeController < ApplicationController
 
     private
 
-        def description
-            @order_product_id = Order.find_by(params[:id]).product_id
-            @product = Product.find_by(params[:id])
-        end
+    def order_params
+        params.require(:order).permit(:number, :delivery_tax, :total_price, products_attributes: [:id, :description, :price])
+    end
+
 end

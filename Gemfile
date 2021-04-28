@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#Administrate gem to use dashboard
 gem 'administrate'
 
 # Use Active Storage variant
@@ -57,4 +58,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#Serialize gem used in API/JSON 
 gem 'active_model_serializers', '~>0.10'
+
+#Add new method do administrate gem
+#gem 'administrate-field-nested_has_many'
