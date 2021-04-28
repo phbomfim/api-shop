@@ -1,3 +1,14 @@
+<div class="flickr_pagination mb-2">
+  <%= paginate @orders%>
+</div>
+
+<div class="mb-3">
+  <%= form_tag(orders_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag ("Search") %>
+  <% end %>
+</div>
+
 <div class="card">
   <div class="card-body">
     <% @orders.each_with_index do |order, index| %>

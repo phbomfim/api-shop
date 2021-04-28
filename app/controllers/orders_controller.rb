@@ -1,6 +1,6 @@
-class HomeController < ApplicationController
+class OrdersController < ApplicationController
     def index
-        @orders = Order.includes(:products)
+        @orders = Order.all.page params[:page]
     end
 
     def terms
