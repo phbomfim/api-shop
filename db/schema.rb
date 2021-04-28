@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_172258) do
+ActiveRecord::Schema.define(version: 2021_04_28_000537) do
 
   create_table "orders", force: :cascade do |t|
     t.string "number"
     t.float "delivery_tax"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id"
+    t.float "total_price"
+    t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -28,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_172258) do
     t.string "image"
     t.float "offer"
     t.integer "promotion_id"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_products_on_order_id"
     t.index ["promotion_id"], name: "index_products_on_promotion_id"
   end
 
@@ -39,5 +44,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_172258) do
     t.string "kind", default: "buy-x-take-y"
   end
 
+  add_foreign_key "orders", "products"
   add_foreign_key "products", "promotions"
 end
