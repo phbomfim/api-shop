@@ -25,6 +25,7 @@ class OrderDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     number
+    created_at
     delivery_tax
     products
     total_price
@@ -39,7 +40,6 @@ class OrderDashboard < Administrate::BaseDashboard
     products
     total_price
     created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
