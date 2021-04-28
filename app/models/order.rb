@@ -3,4 +3,5 @@ class Order < ApplicationRecord
     
     accepts_nested_attributes_for :products, allow_destroy: true
 
+    paginates_per 5
 end
