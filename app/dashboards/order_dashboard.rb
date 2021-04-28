@@ -13,6 +13,8 @@ class OrderDashboard < Administrate::BaseDashboard
     delivery_tax: Field::Number.with_options(decimals: 2),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    products: Field::HasMany,
+    total_price: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,6 +26,8 @@ class OrderDashboard < Administrate::BaseDashboard
     id
     number
     delivery_tax
+    products
+    total_price
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -32,6 +36,8 @@ class OrderDashboard < Administrate::BaseDashboard
     id
     number
     delivery_tax
+    products
+    total_price
     created_at
     updated_at
   ].freeze
@@ -42,6 +48,7 @@ class OrderDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     number
     delivery_tax
+    products
   ].freeze
 
   # COLLECTION_FILTERS

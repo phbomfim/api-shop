@@ -9,7 +9,12 @@ module Admin
         private
 
             def set_product
-                @product = Product.find(params[:id])
+                @product = Product.all
+                @product.each do |p|
+                    if p.stock > 0
+                        @product = p
+                    end
+                end
             end
     end
 end
