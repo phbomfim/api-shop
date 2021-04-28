@@ -1,19 +1,45 @@
-<div class="d-flex align-items-center justify-content-between mb-5">
-    <h1><strong>Welcome !!</strong></h1>
-    <%= link_to "Admin", 'admin' , class: ''%>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+  <div class="container-fluid">
+    <h1 class="text-center">Shop</h1>
+    <%= link_to "Admin", 'admin' , class: "btn btn-primary"%>
+  </div>
+</nav>
 
-<div class="card">
-  <div class="card-body">
-    <% @products.each_with_index do |product, index| %>
-      <div>
-        <div class="col align-items-center">
-            <h4><%= product.description %></h4>
-            <%= image_tag product.image , class: "rounded float-right"%>
-            <%= product.price %><br>
-            <%= product.created_at.strftime("%b %d") %>
+<div>
+  <% @products.each_with_index do |product, index| %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-3">
+            <%= image_tag product.image , class: "img-fluid m-2"%>
+          </div>
+          <% if product.stock > 0 %>
+            <div class="col-6">
+              <div class="card-body">
+                <h4 class="card-title"><%= product.description %></h4>
+                <p class="card-text">R$ <%= product.price %></p>
+                <% if product.offer %>
+                  <p class="card-text fw-bold text-danger">To R$<%= product.offer %></p>
+                <% elsif product.promotion_id %>
+                  <p class="card-text fw-bold text-danger">Sale: <%= product.promotion_id %></p>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="card-body">
+                <%= link_to "Buy", "", method: :post, class: "btn btn-primary mb-1" %>
+                <p class="card-text">In stock: <%= product.stock %></p>
+              </div>
+            </div>
+          <% else %>
+            <div class="col-6">
+              <div class="card-body">
+                <h4 class="card-title text-muted"><%= product.description %></h4>
+                <p class="card-text">R$ <%= product.price %></p>
+                <p class="card-text fw-bold text-warning">SOLD OFF</p>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
