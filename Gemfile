@@ -63,3 +63,5 @@ gem 'active_model_serializers', '~>0.10'
 
 #Add new method do administrate gem
 #gem 'administrate-field-nested_has_many'
+
+gem 'kaminari'
