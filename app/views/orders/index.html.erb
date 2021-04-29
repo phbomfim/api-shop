@@ -2,7 +2,8 @@
   <%= paginate @orders%>
 </div>
 
-<%= link_to "List available orders for API", '/api/v1/orders/' , target: "_blank", class: "btn btn-primary m-3"%>
+<%= link_to "List available orders for API", '/api/v1/orders/' , target: "_blank", class: "btn btn-outline-secondary mb-3 mt-1"%>
+
 <div class="mb-3">
   <%= form_tag(orders_path, method: :get) do %>
     <%= text_field_tag(:search, params[:search]) %>
