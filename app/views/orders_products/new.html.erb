@@ -3,17 +3,21 @@
 <%= form_with model: @order, url: create_order_product_path do |form| %>
     <div class="mb-3">
       <div class="row g-0">
-        <div class="mb-3 col-2">
+        <div class="mb-3 col-7">
             <p> Product name </p>
             <% for product in Product.all %>
-              <%= check_box_tag "order[product_ids][]", product.id %>
-              <%= product.description%><br />
+              <% if product.stock > 0 %>
+                <%= check_box_tag "order[product_ids][]", product.id %>
+                <%= product.description%><br />
+              <% end %>
             <% end %>
         </div>
         <div class="mb-3 col-2">
-          <%= form.label :amount, "Amount" %>
+          <p> Amount </p>
           <% for product in Product.all %>
-            <%= form.number_field :amount, max: product.stock, min: 1, value: 1 %>
+            <% if product.stock > 0 %>
+              <%= form.number_field :amount, max: product.stock, min: 1, value: 1 %>
+            <% end %>
           <% end %>
         </div>
         <div class="mb-3">
