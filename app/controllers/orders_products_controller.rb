@@ -11,6 +11,7 @@ class OrdersProductsController < ApplicationController
         @order = Order.new(order_params)
 
         if @order.save
+            addPrice
             redirect_to root_path
         else
             render :new
@@ -29,5 +30,15 @@ class OrdersProductsController < ApplicationController
 
     def product_params
         params.require(:product).permit(:promotion_id)
+    end
+
+    def addPrice
+        @last = Order.last
+        n = 0
+            @last.products.each do |product|
+                n += product.price
+            end
+        @last.total_price = (n + @last.delivery_tax)
+        @last.save
     end
 end
