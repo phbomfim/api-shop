@@ -1,6 +1,10 @@
 <div class="flickr_pagination mb-2">
+  <!-- Call kiminari gem pagination -->
   <%= paginate @orders%>
 </div>
+
+<!-- Call link to generate JSON visualization -->
+<%= link_to "List available orders for API", '/api/v1/orders/' , target: "_blank", class: "btn btn-outline-secondary mb-3 mt-1"%>
 
 <div class="mb-3">
   <%= form_tag(orders_path, method: :get) do %>
@@ -24,7 +28,7 @@
             <h4>Order number <%= link_to order.number, "/admin/orders/#{order.id}/edit/", class:""%></h4><br>
             <p>Selected products: </p>
             
-              <%= order.products.each_with_index do |product| %>
+              <% order.products.each_with_index do |product| %>
                 <li><p class="fst-italic"><%= product.description %> R$ <%= product.price %></p></li>
               <% end %>
             <br><br>

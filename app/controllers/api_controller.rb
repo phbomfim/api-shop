@@ -3,7 +3,7 @@ class ApiController < ApplicationController
 
     private
 
-        def set_default_format
+        def set_default_format  #Set default to JSON to fix Rails problem
             request.format = :json
         end
 end
