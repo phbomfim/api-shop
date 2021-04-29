@@ -2,6 +2,11 @@ class OrderProduct < ApplicationRecord
     belongs_to :order
     belongs_to :product
 
-    #accepts_nested_attributes_for :products
-    #accepts_nested_attributes_for :orders
+    before_save :calculateTotal
+    
+    private 
+
+    def calculateTotal
+        total = order_items.sum{ |item| item.total_price }
+    end
 end
