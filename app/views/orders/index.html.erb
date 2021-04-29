@@ -1,7 +1,9 @@
 <div class="flickr_pagination mb-2">
+  <!-- Call kiminari gem pagination -->
   <%= paginate @orders%>
 </div>
 
+<!-- Call link to generate JSON visualization -->
 <%= link_to "List available orders for API", '/api/v1/orders/' , target: "_blank", class: "btn btn-outline-secondary mb-3 mt-1"%>
 
 <div class="mb-3">
