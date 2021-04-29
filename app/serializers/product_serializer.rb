@@ -1,3 +1,3 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :description, :stock
+  attributes :id, :price, :image, :description, :stock,  :offer, :promotion
 end

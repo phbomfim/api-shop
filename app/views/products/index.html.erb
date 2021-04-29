@@ -1,0 +1,39 @@
+<div>
+  <%= link_to "List available products for API", '/api/v1/products/' , target: "_blank", class: "btn btn-primary m-3"%>
+  <% @products.each_with_index do |product, index| %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-3">
+            <%= image_tag product.image , class: "img-fluid m-2"%>
+          </div>
+          <% if product.stock > 0 %>
+            <div class="col-6">
+              <div class="card-body">
+                <h4 class="card-title"><%= product.description %></h4>
+                <p class="card-text">R$ <%= product.price %></p>
+                <% if product.offer %>
+                  <p class="card-text fw-bold text-danger">To R$<%= product.offer %></p>
+                <% elsif product.promotion_id %>
+                  <p class="card-text fw-bold text-danger">Sale: <%= product.promotion_id %></p>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="card-body">
+                <%= link_to "Buy", "", method: :post, class: "btn btn-primary mb-1" %>
+                <p class="card-text">In stock: <%= product.stock %></p>
+              </div>
+            </div>
+          <% else %>
+            <div class="col-6">
+              <div class="card-body">
+                <h4 class="card-title text-muted"><%= product.description %></h4>
+                <p class="card-text">R$ <%= product.price %></p>
+                <p class="card-text fw-bold text-warning">SOLD OFF</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container">
+    <%= link_to "MyShop", root_path, class: "navbar-brand" %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      </ul>
+      <ul class="navbar-nav">
+        <%= link_to "Products", 'products' , class: "btn btn-primary m-3"%>
+        <%= link_to "Create a Order", 'create_order' , class: "btn btn-primary m-3"%>
+        <%= link_to "Admin", 'admin' , class: "btn btn-primary m-3"%>
+      </ul>
+    </div>
+  </div>
+</nav>

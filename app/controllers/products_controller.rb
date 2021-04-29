@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class ProductsController < ApplicationController
     def index
         @products = Product.order(published_at: :desc)
     end
