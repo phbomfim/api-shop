@@ -5,4 +5,6 @@ class Product < ApplicationRecord
     belongs_to :promotion, optional: true
     
     accepts_nested_attributes_for :promotion
+
+    validates :description, :stock, :price, presence: true    #To validate a product
 end
