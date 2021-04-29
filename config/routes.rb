@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "create_order", to: "orders#new"
+  post "create_order", to: "orders#create"
+
   resources :products
   resources :orders
 
