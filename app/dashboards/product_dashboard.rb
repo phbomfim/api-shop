@@ -13,6 +13,10 @@ class ProductDashboard < Administrate::BaseDashboard
     stock: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    price: Field::Number.with_options(decimals: 2),
+    image: Field::String,
+    offer: Field::Number.with_options(decimals: 2),
+    promotion: Field::BelongsTo,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,7 +28,9 @@ class ProductDashboard < Administrate::BaseDashboard
     id
     description
     stock
-    created_at
+    price
+    offer
+    promotion
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +41,10 @@ class ProductDashboard < Administrate::BaseDashboard
     stock
     created_at
     updated_at
+    price
+    image
+    offer
+    promotion
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -43,6 +53,10 @@ class ProductDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     description
     stock
+    price
+    image
+    offer
+    promotion
   ].freeze
 
   # COLLECTION_FILTERS
@@ -60,7 +74,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how products are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(product)
-  #   "Product ##{product.id}"
-  # end
+  def display_resource(product)
+    "#{product.description} - #{product.stock} units"
+  end
 end
