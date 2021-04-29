@@ -1,0 +1,30 @@
+<h1 class="m-3">Create a Order 2</h1>
+
+<%= form_with model: @order, url: create_order_product_path do |form| %>
+    <div class="mb-3">
+      <div class="row g-0">
+        <div class="mb-3 col-2">
+            <p> Product name </p>
+            <% for product in Product.all %>
+              <%= check_box_tag "order[product_ids][]", product.id %>
+              <%= product.description%><br />
+            <% end %>
+        </div>
+        <div class="mb-3 col-2">
+          <%= form.label :amount, "Amount" %>
+          <% for product in Product.all %>
+            <%= form.number_field :amount, max: product.stock, min: 1, value: 1 %>
+          <% end %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :number, "Number to order" %>
+            <%= form.text_field :number, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :delivery_tax %>
+            <%= form.number_field :delivery_tax, class: "form-control" %>
+        </div>
+        <%= form.submit %>
+    </div>
+  </div>
+<% end %>

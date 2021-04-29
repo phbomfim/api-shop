@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
     end
 
     def new
-        @orders = Order.all.page params[:page]
         @products = Product.all
         @order = Order.new
     end
@@ -21,6 +20,10 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:number, :delivery_tax, :total_price, products_attributes: [:id, :description, :price])
+        params.require(:order).permit(:number, :delivery_tax, :total_price, product_ids:[])
+    end
+
+    def product_params
+        params.require(:product).permit(:promotion_id)
     end
 end
