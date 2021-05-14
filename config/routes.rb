@@ -16,12 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get "create_order_product", to: "orders_products#new"
-  post "create_order_product", to: "orders_products#create"
+  get "create_record", to: "records#new"
+  post "create_record", to: "records#create"
 
   resources :products
   resources :orders
-
 
   root to: 'orders#index'
 
