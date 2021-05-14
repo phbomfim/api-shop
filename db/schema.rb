@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_04_29_131405) do
 
-  create_table "order_products", id: false, force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "product_id", null: false
-    t.integer "amount"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string "number"
     t.float "delivery_tax"
@@ -26,6 +20,12 @@ ActiveRecord::Schema.define(version: 2021_04_29_131405) do
     t.integer "product_id"
     t.float "total_price"
     t.index ["product_id"], name: "index_orders_on_product_id"
+  end
+
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.integer "amount"
   end
 
   create_table "products", force: :cascade do |t|
