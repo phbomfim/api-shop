@@ -1,5 +1,6 @@
 <div>
   <%= link_to "List available products for API", '/api/v1/products/' , target: "_blank", class: "btn btn-outline-secondary mb-3 mt-3"%>
+  <%= link_to "Register a Product", 'products/new/' , class: "btn btn-outline-secondary mb-3 mt-3"%>
   <% @products.each_with_index do |product, index| %>
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
@@ -11,9 +12,7 @@
               <div class="card-body">
                 <h4 class="card-title"><%= product.description %></h4>
                 <p class="card-text">R$ <%= product.price %></p>
-                <% if product.offer %>
-                  <p class="card-text fw-bold text-danger">To R$<%= product.offer %></p>
-                <% elsif product.promotion_id %>
+                <% if product.promotion_id %>
                   <p class="card-text fw-bold text-danger">Sale: <%= product.promotion_id %></p>
                 <% end %>
               </div>

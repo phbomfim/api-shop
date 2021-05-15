@@ -1,0 +1,7 @@
+<div>
+  <%= link_to "Register a Promotion", 'promotions/new/' , class: "btn btn-outline-secondary mb-3 mt-3"%>
+  <% @promotions.each_with_index do |promotion, index| %>
+      <div class="card mb-3" style="text-align: center;">
+        <h4>(<%= promotion.id %>) - Buy <%= promotion.base %> take <%= promotion.value %> </h4>
+      </div>
+  <% end %>
