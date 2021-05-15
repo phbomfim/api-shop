@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :products
   resources :orders
+  resources :promotions
 
   root to: 'orders#index'
 

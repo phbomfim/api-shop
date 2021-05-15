@@ -3,9 +3,12 @@ class ProductsController < ApplicationController
         @products = Product.order(created_at: :desc)
     end
 
-    def terms
+    def new
     end
 
-    def privacy
+    def create
+    end
+
+    def delete
     end
 end
