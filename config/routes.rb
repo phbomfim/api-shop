@@ -7,9 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "create_record", to: "records#new"
-  post "create_record", to: "records#create"
-
+  resources :records
   resources :products
   resources :orders
   resources :promotions

@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_04_29_131405) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "price"
     t.string "image"
-    t.float "offer"
     t.integer "promotion_id"
     t.integer "order_id"
     t.index ["order_id"], name: "index_products_on_order_id"
