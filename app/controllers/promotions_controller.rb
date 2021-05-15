@@ -1,6 +1,6 @@
 class PromotionsController < ApplicationController
     def index
-        @promotions = Promotion.order(created_at: :desc)
+        @promotions = Promotion.order(id: :asc)
     end
 
     def new
