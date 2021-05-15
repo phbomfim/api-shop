@@ -45,18 +45,18 @@ ActiveRecord::Schema.define(version: 2021_04_29_131405) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.integer "produtct_id", null: false
+    t.integer "product_id", null: false
     t.integer "order_id", null: false
     t.integer "amount"
     t.float "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_records_on_order_id"
-    t.index ["produtct_id"], name: "index_records_on_produtct_id"
+    t.index ["product_id"], name: "index_records_on_product_id"
   end
 
   add_foreign_key "orders", "products"
   add_foreign_key "products", "promotions"
   add_foreign_key "records", "orders"
-  add_foreign_key "records", "produtcts"
+  add_foreign_key "records", "products"
 end
