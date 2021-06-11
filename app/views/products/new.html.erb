@@ -4,32 +4,30 @@
     <%= render "shared/form_errors", form: form %>
 
     <div class="mb-3">
-        <%= form.label :description %>
+        <p>Description</p>
         <%= form.text_field :description, class: "form-control", placeholder: "ABACAXI UNIDADE" %>
     </div>
 
     <div class="mb-3">
-        <%= form.label :image, "Image (URL)" %>
+        <p>Image (URL)</p>
         <%= form.url_field :image, class: "form-control", placeholder: "https://i.imgur.com/example.png" %>
     </div>
 
     <div class="mb-3">
-        <%= form.label :stock %>
+        <p>Stock</p>
         <%= form.number_field :stock, class: "form-control", placeholder: "0 - 1000" %>
     </div>
 
     <div class="mb-3">
-        <%= form.label :price %>
+        <p>Price</p>
         <%= form.number_field :price, class: "form-control", placeholder: "1.00 - 100.00" %>
     </div>
 
     <div class="mb-3">
-        <% promo = Array.new %>
-        <% for p in @promos %>
-            <% promo << p.id %>
-        <% end %>
-        <%= form.label :promotion_id %>
-        <%= form.select :promotion_id, ["",promo], class: "form-control" %>
+        <p>Promotion</p>
+        <% promotions_array = Promotion.all.map { |promotion| ["Buy #{promotion.base} take #{promotion.value}", promotion.id]} %>
+        <% promotions_array.insert(0, '') %>
+        <%= form.select :promotion_id, options_for_select(promotions_array), class: "form-control" %>
     </div>
 
     <div class="mb-3">

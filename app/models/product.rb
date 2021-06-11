@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    has_one :order
+    belongs_to :order
     
     belongs_to :promotion, optional: true   #Prodcuts should have a promotion
     
