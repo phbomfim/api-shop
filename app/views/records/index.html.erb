@@ -1,0 +1,26 @@
+<%= link_to "Register a record", 'records/new/' , class: "btn btn-outline-secondary mb-3 mt-3"%>
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">Record ID</th>
+    <th scope="col">Order</th>
+    <th scope="col">Product</th>
+    <th scope="col">Amount (un.)</th>
+    <th scope="col">Total price (R$)</th>
+  </tr>
+</thead>
+<tbody>
+  <% @records.each_with_index do |record, index| %>
+    <% @order = Order.find(record.order_id) %>
+    <% @product = Product.find(record.product_id) %>
+    <tr>
+        <th scope="row"><%= record.id %></th>
+        <td><%= @order.number %></td>
+        <td><%= @product.description %></td>
+        <td><%= record.amount %></td>
+        <td><%= record.amount * @product.price %> </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

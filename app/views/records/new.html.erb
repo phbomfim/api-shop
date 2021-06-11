@@ -1,41 +1,36 @@
 <h1> Register a order </h1>
-
 <%= form_with model: @record do |form| %>
-    <%= render "shared/form_errors", form: form %>
+  <%= render "shared/form_errors", form: form %>
+  <div class="mb-3 mt-3">
+    <% orders_array = Order.all.map { |order| ["Order number #{order.number}", order.id]} %>
+    <% orders_array.insert(0, ["New order","new"]) %>
+    <p> Select a order: </p>
+    <%= form.select :order_id, options_for_select(orders_array), class: "form-control" %>
+  </div>
 
-    <div class="mb-3">
-      <% order = Array.new %>
-      <% for p in Order.all %>
-          <% order << p.id %>
-      <% end %>
-      <p> Select a order: </p>
-      <%= form.select :order_id, ["New order",order], selected: "New order", class: "form-control" %>
-    </div>
+  <div class="mb-3">
+    <p> Product name </p>
+    <% products_array = Product.all.map { |product| ["#{product.description} - #{product.stock} un.", product.id]} %>
+    <%= form.select :product_id, options_for_select(products_array), class: "form-control" %>
+  </div>
 
-    <div class="mb-3">
-      <div class="row g-0">
-        <div class="mb-3 col-7">
-            <p> Product name </p>
-            <% for product in Product.all %>    <!-- For to list all products -->
-              <% if product.stock > 0 %>        <!-- Only show products with stock > 0 -->
-                <%= check_box_tag :product_id, product.id %>
-                <%= product.description%><br />
-              <% end %>
-            <% end %>
-        </div>
-        <div class="mb-3 col-2">
-          <p> Amount </p>
-          <% for product in Product.all %>
-            <% if product.stock > 0 %>    <!-- Show amount field only products with stock -->
-              <%= form.number_field :amount, max: product.stock, min: 1, value: 1 %>
-            <% end %>
-          <% end %>
-        </div>
-    </div>
+  <div class="mb-3">
+    <p> Amount </p>
+    <%= form.number_field :amount, in: 1..20, class: "form-control" , placeholder: "Min 1 - Max 20"%>
+  </div>
 
-    <div class="mb-3">
-        <%= form.submit %>
-        <%= link_to "Back", root_path , class: "btn" %>
-    </div>
+  <div class="mb-3">
+    <p> Delivery tax <i class="text-muted">(if a new order)</i></p>
+    <%= form.number_field :delivery_tax, in: 0..20, class: "form-control" , id: "delivery_tax_label", placeholder: "Min 0.0 - Max 20.00"%>
+  </div>
 
+  <div class="mb-3">
+    <p> Order number <i class="text-muted">(if a new order)</i></p>
+    <%= form.text_field :number, in: 1..20, class: "form-control" , placeholder: "12345678" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit %>
+    <%= link_to "Back", records_path , class: "btn" %>
+  </div>
 <% end %>
