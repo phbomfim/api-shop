@@ -1,6 +1,8 @@
 class Record < ApplicationRecord
-    belongs_to :order, optional: true
-    belongs_to :product, optional: true
+    has_one :order
+    has_one :product
+
+    validates :amount, presence: true
 end
 
 ## Não preciso criar nada na tabela order
